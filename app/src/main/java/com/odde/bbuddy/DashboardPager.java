@@ -32,6 +32,8 @@ public class DashboardPager extends FragmentStatePagerAdapter {
                 return new TabDashboardActivity();
             case 1:
                 return new ShowAllAccountsActivity();
+            case 2:
+                return new LicenseActivity();
             default:
                 return null;
         }

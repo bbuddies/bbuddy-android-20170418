@@ -18,6 +18,7 @@
     <string name="update">Save</string>
     <string name="delete">Delete</string>
     <string name="dashboard">Dashboard</string>
+    <string name="license">License</string>
 
     <!-- account related strings -->
     <string name="account_name">Name</string>

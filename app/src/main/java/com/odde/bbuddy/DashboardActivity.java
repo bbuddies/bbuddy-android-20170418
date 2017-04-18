@@ -32,6 +32,7 @@ public class DashboardActivity extends AppCompatActivity implements TabLayout.On
         //Adding the tabs using addTab() method
         tabLayout.addTab(tabLayout.newTab().setText("Dashboard"));
         tabLayout.addTab(tabLayout.newTab().setText("Accounts"));
+        tabLayout.addTab(tabLayout.newTab().setText("Licenses"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         //Initializing viewPager
@@ -69,6 +70,14 @@ public class DashboardActivity extends AppCompatActivity implements TabLayout.On
                     @Override
                     public void onClick(View view) {
                         startActivity(new Intent(getApplicationContext(), AddAccountActivity.class));
+                    }
+                });
+                break;
+            case 2:
+                add.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+//                        startActivity(new Intent(getApplicationContext(), LicenseActivity.class));
                     }
                 });
                 break;
