@@ -24,4 +24,8 @@
     <string name="account_name">Name</string>
     <string name="account_balance_brought_forward">Balance Brought Forward</string>
 
+    <!-- license related strings -->
+    <string name="month">Month</string>
+    <string name="amount">Amount</string>
+
 </resources>
