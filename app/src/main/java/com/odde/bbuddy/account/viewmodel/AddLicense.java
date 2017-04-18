@@ -1,5 +1,6 @@
-package com.odde.bbuddy.License;
+package com.odde.bbuddy.account.viewmodel;
 
+import com.odde.bbuddy.account.api.AddLicenseApi;
 import com.odde.bbuddy.di.scope.ActivityScope;
 
 import org.robobinding.annotation.PresentationModel;
@@ -11,6 +12,13 @@ import javax.inject.Inject;
 public class AddLicense {
 	private String month;
 	private String amount;
+
+	private AddLicenseApi addLicenseApi;
+
+	@Inject
+	public AddLicense(AddLicenseApi addLicenseApi) {
+		this.addLicenseApi = addLicenseApi;
+	}
 
 	public String getMonth() {
 		return month;
@@ -28,7 +36,11 @@ public class AddLicense {
 		this.amount = amount;
 	}
 
-	@Inject
-	public AddLicense() {
+	public void add() {
+		License license = new License();
+		license.setMonth(month);
+		license.setAmount(Integer.parseInt(amount));
+
+		addLicenseApi.addLicense(license);
 	}
 }

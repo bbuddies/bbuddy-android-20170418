@@ -3,7 +3,7 @@ package com.odde.bbuddy.account.view;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.odde.bbuddy.License.AddLicense;
+import com.odde.bbuddy.account.viewmodel.AddLicense;
 import com.odde.bbuddy.R;
 
 import org.robobinding.ViewBinder;
