@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.widget.TextView;
 
 import com.odde.bbuddy.account.view.ShowAllAccountsActivity;
+import com.odde.bbuddy.license.TabLicenseActivity;
 
 
 public class DashboardPager extends FragmentStatePagerAdapter {
@@ -25,13 +26,15 @@ public class DashboardPager extends FragmentStatePagerAdapter {
     //Overriding method getItem
     @Override
     public Fragment getItem(int position) {
-        TextView add = (TextView) dashboardActivity.findViewById(R.id.add);
+        TextView add = (TextView) dashboardActivity.findViewById(R.id.add_license_button);
         //Returning the current tabs
         switch (position) {
             case 0:
                 return new TabDashboardActivity();
             case 1:
                 return new ShowAllAccountsActivity();
+            case 2:
+                return new TabLicenseActivity();
             default:
                 return null;
         }

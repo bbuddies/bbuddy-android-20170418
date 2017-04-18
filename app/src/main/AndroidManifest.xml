@@ -26,7 +26,8 @@
         </activity>
         <activity android:name=".DashboardActivity" />
         <activity android:name=".account.view.AddAccountActivity" />
-        <activity android:name=".account.view.EditDeleteAccountActivity"></activity>
+        <activity android:name=".license.AddLicenseActivity" />
+        <activity android:name=".account.view.EditDeleteAccountActivity"/>
     </application>
 
 </manifest>
