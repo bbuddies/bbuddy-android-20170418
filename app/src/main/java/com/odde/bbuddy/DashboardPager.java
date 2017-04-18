@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.widget.TextView;
 
+import com.odde.bbuddy.account.view.LicenseActivity;
 import com.odde.bbuddy.account.view.ShowAllAccountsActivity;
 
 
@@ -32,6 +33,8 @@ public class DashboardPager extends FragmentStatePagerAdapter {
                 return new TabDashboardActivity();
             case 1:
                 return new ShowAllAccountsActivity();
+            case 2:
+                return new LicenseActivity();
             default:
                 return null;
         }
