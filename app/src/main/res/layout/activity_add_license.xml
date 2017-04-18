@@ -10,7 +10,7 @@
               android:paddingLeft="@dimen/activity_horizontal_margin"
               android:paddingRight="@dimen/activity_horizontal_margin"
               android:paddingTop="@dimen/activity_vertical_margin"
-              tools:context="com.odde.bbuddy.AddLicenseActivity">
+              tools:context="com.odde.bbuddy.license.view.AddLicenseActivity">
 
 	<android.support.design.widget.TextInputLayout
 		android:layout_width="match_parent"
@@ -21,7 +21,8 @@
 			android:layout_height="wrap_content"
 			android:hint="@string/month"
 			android:inputType="number"
-			android:id="@+id/month"/>
+			android:id="@+id/month"
+			bind:text="${month}"/>
 
 	</android.support.design.widget.TextInputLayout>
 
@@ -34,7 +35,8 @@
 			android:layout_height="wrap_content"
 			android:hint="@string/amount"
 			android:inputType="number"
-			android:id="@+id/amount"/>
+			android:id="@+id/amount"
+			bind:text="${amount}"/>
 	</android.support.design.widget.TextInputLayout>
 
 	<Button
