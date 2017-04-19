@@ -5,7 +5,7 @@ import android.content.Context;
 
 import com.odde.bbuddy.account.viewmodel.PresentableAccounts;
 import com.odde.bbuddy.di.scope.ActivityScope;
-import com.odde.bbuddy.license.AddLicenseView;
+import com.odde.bbuddy.license.view.AddLicenseView;
 
 import org.robobinding.ViewBinder;
 import org.robobinding.binder.BinderFactoryBuilder;

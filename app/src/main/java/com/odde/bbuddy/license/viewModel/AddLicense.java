@@ -1,10 +1,8 @@
 package com.odde.bbuddy.license.viewModel;
 
-import android.text.TextUtils;
-
 import com.odde.bbuddy.license.api.AddLicenseApi;
 import com.odde.bbuddy.di.scope.ActivityScope;
-import com.odde.bbuddy.license.AddLicenseView;
+import com.odde.bbuddy.license.view.AddLicenseView;
 
 import org.robobinding.annotation.PresentationModel;
 

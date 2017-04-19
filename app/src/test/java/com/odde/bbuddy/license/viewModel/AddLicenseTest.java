@@ -1,9 +1,7 @@
 package com.odde.bbuddy.license.viewModel;
 
 import com.odde.bbuddy.license.api.AddLicenseApi;
-import com.odde.bbuddy.license.AddLicenseView;
-import com.odde.bbuddy.license.viewModel.AddLicense;
-import com.odde.bbuddy.license.viewModel.License;
+import com.odde.bbuddy.license.view.AddLicenseView;
 
 import junit.framework.Assert;
 

@@ -6,7 +6,6 @@ import android.widget.Toast;
 
 import com.odde.bbuddy.R;
 import com.odde.bbuddy.license.viewModel.AddLicense;
-import com.odde.bbuddy.license.AddLicenseView;
 
 import org.robobinding.ViewBinder;
 
