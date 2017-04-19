@@ -37,8 +37,6 @@ public class AddLicenseControllerTest {
 		AddLicenseController controller = Mockito.spy(new AddLicenseController(api));
 
 		int timesShowToast = 0;
-		int timesCheckZero = 0;
-
 		Mockito.doNothing().when(controller).showAmountZeroToast();
 		++timesShowToast;
 
@@ -46,19 +44,16 @@ public class AddLicenseControllerTest {
 		controller.add();
 
 
-		verify(controller, times(++timesCheckZero)).isAmountZeroEmpty();
 		verify(controller, times(++timesShowToast)).showAmountZeroToast();
 
 		controller.setAmount("0");
 		controller.add();
 
-		verify(controller, times(++timesCheckZero)).isAmountZeroEmpty();
 		verify(controller, times(++timesShowToast)).showAmountZeroToast();
 
 		controller.setAmount("100");
 		controller.add();
 
-		verify(controller, times(++timesCheckZero)).isAmountZeroEmpty();
 		verify(controller, times(timesShowToast)).showAmountZeroToast();
 		ArgumentCaptor<License> captor = forClass(License.class);
 		verify(api).addLicense(captor.capture());
@@ -66,16 +61,15 @@ public class AddLicenseControllerTest {
 
 	@Test
 	public void isAmountZeroEmpty() {
-		LicenseApi api = mock(LicenseApi.class);
-		AddLicenseController controller = new AddLicenseController(api);
+		License license = new License("2017-04", "");
 
 		// default empty
-		Assert.assertTrue(controller.isAmountZeroEmpty());
+		Assert.assertTrue(license.isAmountZeroOrEmpty());
 
-		controller.setAmount("9487");
-		Assert.assertFalse(controller.isAmountZeroEmpty());
+		license.setAmount("9487");
+		Assert.assertFalse(license.isAmountZeroOrEmpty());
 
-		controller.setAmount("0");
-		Assert.assertTrue(controller.isAmountZeroEmpty());
+		license.setAmount("0");
+		Assert.assertTrue(license.isAmountZeroOrEmpty());
 	}
 }

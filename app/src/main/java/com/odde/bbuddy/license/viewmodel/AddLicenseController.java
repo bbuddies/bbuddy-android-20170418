@@ -2,7 +2,6 @@ package com.odde.bbuddy.license.viewmodel;
 
 
 import android.content.Context;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.odde.bbuddy.R;
@@ -51,22 +50,13 @@ public class AddLicenseController {
 	}
 
 	public void add() {
-		if (isAmountZeroEmpty()) {
+		License license = new License(month, amount);
+		if (license.isAmountZeroOrEmpty()) {
 			showAmountZeroToast();
 			return;
 		}
 
-		api.addLicense(new License(month, amount));
-	}
-
-	boolean isAmountZeroEmpty() {
-		int number = 0;
-		try {
-			number = Integer.parseInt(amount);
-		} catch(NumberFormatException e) {
-
-		}
-		return number == 0;
+		api.addLicense(license);
 	}
 
 	void showAmountZeroToast() {
