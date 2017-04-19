@@ -52,7 +52,7 @@ public class AddLicenseController {
 
 	public void add() {
 		Log.d(TAG, "" + month + "/" + amount);
-		if (isAmountZero()) {
+		if (isAmountZeroEmpty()) {
 			showAmountZeroToast();
 			return;
 		}
@@ -60,8 +60,14 @@ public class AddLicenseController {
 		api.addLicense(new License(month, amount));
 	}
 
-	boolean isAmountZero() {
-		return Integer.parseInt(amount) == 0;
+	boolean isAmountZeroEmpty() {
+		int number = 0;
+		try {
+			number = Integer.parseInt(amount);
+		} catch(NumberFormatException e) {
+
+		}
+		return number == 0;
 	}
 
 	void showAmountZeroToast() {
