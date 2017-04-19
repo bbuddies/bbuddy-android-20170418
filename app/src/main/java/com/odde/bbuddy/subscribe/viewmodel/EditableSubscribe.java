@@ -1,13 +1,18 @@
 package com.odde.bbuddy.subscribe.viewmodel;
 
+import android.util.Log;
+
 import com.odde.bbuddy.di.scope.ActivityScope;
-import com.odde.bbuddy.license.api.License;
-import com.odde.bbuddy.license.api.LicenseApi;
 import com.odde.bbuddy.subscribe.api.SubscribeApi;
 
 import org.robobinding.annotation.PresentationModel;
 
+import java.util.List;
+
 import javax.inject.Inject;
+
+import retrofit2.Call;
+import retrofit2.Response;
 
 /**
  * Created by aaronchu on 2017/4/19.
@@ -27,11 +32,15 @@ public class EditableSubscribe {
 	}
 
 	public void calculate() {
-		mSubscribeApi.getLicenseFee(new Runnable() {
+		mSubscribeApi.getLicensePlan(new SubscriptionPlanCallbacks() {
 			@Override
-			public void run() {
-//				startDate
-//				endDate
+			public void onResponse(Call<List<LicensePlan>> call, Response<List<LicensePlan>> response) {
+				Log.d("Aaron", "onResponse:: call: " + call + ", response: " + response);
+			}
+
+			@Override
+			public void onFailure(Call<List<LicensePlan>> call, Throwable t) {
+				Log.d("Aaron", "onFailure:: call: " + call + ", t: " + t);
 			}
 		});
 	}
@@ -50,6 +59,12 @@ public class EditableSubscribe {
 
 	public void setEndDate(String endDate) {
 		this.endDate = endDate;
+	}
+
+	public interface SubscriptionPlanCallbacks {
+		void onResponse(Call<List<LicensePlan>> call, retrofit2.Response<List<LicensePlan>> response);
+
+		void onFailure(Call<List<LicensePlan>> call, Throwable t);
 	}
 
 }

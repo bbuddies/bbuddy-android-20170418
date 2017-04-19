@@ -1,10 +1,11 @@
 package com.odde.bbuddy.subscribe.api;
 
-import com.odde.bbuddy.subscribe.viewmodel.LicenseFee;
-import com.odde.bbuddy.subscribe.viewmodel.UserPlan;
+import com.odde.bbuddy.subscribe.viewmodel.LicensePlan;
+import com.odde.bbuddy.subscribe.viewmodel.SubscriptionPlan;
+
+import java.util.List;
 
 import retrofit2.Call;
-import retrofit2.http.Body;
 import retrofit2.http.GET;
 
 /**
@@ -13,10 +14,10 @@ import retrofit2.http.GET;
 
 public interface RawSubscribeApi {
 
-	@GET("/get")
-	Call<LicenseFee> getLicenseFee(@Body LicenseFee licenseFee);
+	@GET("/licenses")
+	Call<List<LicensePlan>> getLicensePlan();
 
-	@GET("/userPlan")
-	Call<UserPlan> getUserePlan(@Body UserPlan userPlan);
+	@GET("/fee")
+	Call<SubscriptionPlan> getSubscriptionPlan(String startDate, String endDate);
 
 }

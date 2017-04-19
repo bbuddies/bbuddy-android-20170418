@@ -3,6 +3,7 @@ package com.odde.bbuddy.subscribe.view;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
 
 import com.odde.bbuddy.R;
 import com.odde.bbuddy.subscribe.viewmodel.EditableSubscribe;
@@ -34,7 +35,8 @@ public class AddSubscribeActivity extends AppCompatActivity implements AddSubscr
 
 	@Override
 	public void showResult(String result) {
-
+		TextView totalAmount = (TextView) findViewById(R.id.total_amount_label);
+		totalAmount.setText(result);
 	}
 
 }
