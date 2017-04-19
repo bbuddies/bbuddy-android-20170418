@@ -19,7 +19,7 @@ public class AddLicenseApi {
 	}
 
 	public void addLicense(License license) {
-		apiFactory.create(RawAddLicenseApi.class).addAccount(license).enqueue(new Callback<License>() {
+		apiFactory.create(RawAddLicenseApi.class).addLicense(license).enqueue(new Callback<License>() {
 			@Override
 			public void onResponse(Call<License> call, Response<License> response) {
 

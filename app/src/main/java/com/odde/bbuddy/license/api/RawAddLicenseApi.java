@@ -9,5 +9,5 @@ import retrofit2.http.POST;
 public interface RawAddLicenseApi {
 
 	@POST("/licenses")
-	Call<License> addAccount(@Body License account);
+	Call<License> addLicense(@Body License account);
 }
