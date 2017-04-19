@@ -2,6 +2,7 @@ package com.odde.bbuddy.license.api;
 
 import android.util.Log;
 
+import com.odde.bbuddy.WrappedAPIResponse;
 import com.odde.bbuddy.common.ApiFactory;
 import com.odde.bbuddy.license.viewModel.License;
 
@@ -23,13 +24,13 @@ public class GetLicensesApi {
 	}
 
 	public void get() {
-		apiFactory.create(RawGetLicensesApi.class).getLicenses().enqueue(new Callback<List<License>>() {
+		apiFactory.create(RawGetLicensesApi.class).getLicenses().enqueue(new Callback<WrappedAPIResponse<List<License>>>() {
 			@Override
-			public void onResponse(Call<List<License>> call, Response<List<License>> response) {
+			public void onResponse(Call<WrappedAPIResponse<List<License>>> call, Response<WrappedAPIResponse<List<License>>> response) {
 			}
 
 			@Override
-			public void onFailure(Call<List<License>> call, Throwable t) {
+			public void onFailure(Call<WrappedAPIResponse<List<License>>> call, Throwable t) {
 			}
 		});
 	}

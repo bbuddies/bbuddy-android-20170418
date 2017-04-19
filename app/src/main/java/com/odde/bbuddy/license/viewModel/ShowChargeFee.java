@@ -24,6 +24,7 @@ public class ShowChargeFee {
 	}
 
 	public void charge() {
+		getLicensesApi.get();
 	}
 
 	public String getStartDate() {
