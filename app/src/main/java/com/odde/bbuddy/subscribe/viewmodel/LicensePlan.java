@@ -22,4 +22,5 @@ public class LicensePlan {
 	public String toString() {
 		return "id: " + id + ", month: " + month + ", amount: " + amount;
 	}
+
 }

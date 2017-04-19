@@ -21,7 +21,7 @@ import static com.odde.bbuddy.di.component.ActivityComponentFactory.createActivi
 public class AddSubscribeActivity extends AppCompatActivity implements AddSubscribeCallbacks {
 
 	@Inject
-	EditableSubscribe mSubscribeModule;
+	EditableSubscribe mSubscribeModel;
 
 	@Inject
 	ViewBinder mViewBinder;
@@ -30,8 +30,8 @@ public class AddSubscribeActivity extends AppCompatActivity implements AddSubscr
 	protected void onCreate(@Nullable Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		createActivityComponentBy(this).inject(this);
-		mSubscribeModule.setCallbacks(this);
-		setContentView(mViewBinder.inflateAndBind(R.layout.activity_add_subscribe, mSubscribeModule));
+		mSubscribeModel.setCallbacks(this);
+		setContentView(mViewBinder.inflateAndBind(R.layout.activity_add_subscribe, mSubscribeModel));
 	}
 
 	@Override

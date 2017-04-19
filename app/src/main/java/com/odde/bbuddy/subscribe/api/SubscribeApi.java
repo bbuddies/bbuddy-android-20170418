@@ -1,7 +1,5 @@
 package com.odde.bbuddy.subscribe.api;
 
-import android.util.Log;
-
 import com.odde.bbuddy.subscribe.viewmodel.EditableSubscribe;
 import com.odde.bbuddy.subscribe.viewmodel.LicensePlan;
 
@@ -23,7 +21,7 @@ public class SubscribeApi {
 		this.mRawSubscribeApi = rawSubscribeApi;
 	}
 
-	public void getLicensePlan(final EditableSubscribe.SubscriptionPlanCallbacks callbacks) {
+	public void getLicensePlan(final EditableSubscribe.SubscribePlanCallbacks callbacks) {
 		mRawSubscribeApi.getLicensePlan()
 				.enqueue(new Callback<List<LicensePlan>>() {
 					@Override
