@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.odde.bbuddy.license.view.LicenseActivity;
 import com.odde.bbuddy.account.view.ShowAllAccountsActivity;
+import com.odde.bbuddy.license.view.ShowChargeFeeActivity;
 
 
 public class DashboardPager extends FragmentStatePagerAdapter {
@@ -35,6 +36,8 @@ public class DashboardPager extends FragmentStatePagerAdapter {
                 return new ShowAllAccountsActivity();
             case 2:
                 return new LicenseActivity();
+            case 3:
+                return new ShowChargeFeeActivity();
             default:
                 return null;
         }

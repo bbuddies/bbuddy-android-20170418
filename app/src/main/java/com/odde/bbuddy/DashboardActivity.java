@@ -34,6 +34,7 @@ public class DashboardActivity extends AppCompatActivity implements TabLayout.On
 		tabLayout.addTab(tabLayout.newTab().setText("Dashboard"));
 		tabLayout.addTab(tabLayout.newTab().setText("Accounts"));
 		tabLayout.addTab(tabLayout.newTab().setText("License"));
+		tabLayout.addTab(tabLayout.newTab().setText("Fee"));
 		tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
 		//Initializing viewPager
