@@ -10,14 +10,14 @@ import javax.inject.Inject;
 
 @PresentationModel
 @ActivityScope
-public class EditableLicense {
+public class AddLicenseController {
 
 	private String month;
 	private String amount;
 	private LicenseApi api;
 
 	@Inject
-	public EditableLicense(LicenseApi api) {
+	public AddLicenseController(LicenseApi api) {
 		this.api = api;
 	}
 

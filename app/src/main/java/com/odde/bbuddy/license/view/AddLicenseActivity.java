@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.odde.bbuddy.R;
-import com.odde.bbuddy.license.viewmodel.EditableLicense;
+import com.odde.bbuddy.license.viewmodel.AddLicenseController;
 
 import org.robobinding.ViewBinder;
 
@@ -17,7 +17,7 @@ import static com.odde.bbuddy.di.component.ActivityComponentFactory.createActivi
 public class AddLicenseActivity extends AppCompatActivity {
 
 	@Inject
-	EditableLicense license;
+	AddLicenseController license;
 
 	@Inject
 	ViewBinder viewBinder;
