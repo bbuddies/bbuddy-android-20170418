@@ -1,10 +1,11 @@
-package com.odde.bbuddy.license;
+package com.odde.bbuddy.license.view;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.odde.bbuddy.R;
+import com.odde.bbuddy.license.viewmodel.EditableLicense;
 
 import org.robobinding.ViewBinder;
 
@@ -16,7 +17,7 @@ import static com.odde.bbuddy.di.component.ActivityComponentFactory.createActivi
  * Created by aaronchu on 2017/4/18.
  */
 
-public class AddLicenseActivity extends AppCompatActivity {
+public class AddLicenseActivity extends AppCompatActivity implements AddLicense {
 
 	@Inject
 	EditableLicense mLicense;
@@ -28,7 +29,12 @@ public class AddLicenseActivity extends AppCompatActivity {
 	protected void onCreate(@Nullable Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		createActivityComponentBy(this).inject(this);
+		mLicense.setView(this);
 		setContentView(mViewBinder.inflateAndBind(R.layout.activity_add_license, mLicense));
 	}
 
+	@Override
+	public void showError(String error) {
+
+	}
 }

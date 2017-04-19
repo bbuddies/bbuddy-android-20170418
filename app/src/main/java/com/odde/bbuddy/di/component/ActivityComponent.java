@@ -6,7 +6,7 @@ import com.odde.bbuddy.account.view.EditDeleteAccountActivity;
 import com.odde.bbuddy.account.view.ShowAllAccountsActivity;
 import com.odde.bbuddy.di.module.ActivityModule;
 import com.odde.bbuddy.di.scope.ActivityScope;
-import com.odde.bbuddy.license.AddLicenseActivity;
+import com.odde.bbuddy.license.view.AddLicenseActivity;
 
 import dagger.Subcomponent;
 

@@ -11,6 +11,8 @@ import com.odde.bbuddy.authentication.Credentials;
 import com.odde.bbuddy.common.ApiFactory;
 import com.odde.bbuddy.common.JsonBackend;
 import com.odde.bbuddy.common.JsonMapper;
+import com.odde.bbuddy.license.api.LicenseApi;
+import com.odde.bbuddy.license.api.RawLicenseApi;
 
 import javax.inject.Singleton;
 
@@ -49,6 +51,11 @@ public class ApplicationModule {
     @Provides @Singleton
     public AccountsApi provideAccounts(JsonBackend jsonBackend, ApiFactory apiFactory) {
         return new AccountsApi(jsonBackend, new JsonMapper<>(Account.class), apiFactory.create(RawAccountsApi.class));
+    }
+
+    @Provides @Singleton
+    public LicenseApi provideLicense(ApiFactory apiFactory) {
+        return new LicenseApi(apiFactory.create(RawLicenseApi.class));
     }
 
 }
