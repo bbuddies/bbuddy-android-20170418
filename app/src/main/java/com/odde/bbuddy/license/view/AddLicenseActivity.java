@@ -1,12 +1,11 @@
-package com.odde.bbuddy.account.view;
+package com.odde.bbuddy.license.view;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
-import com.odde.bbuddy.account.viewmodel.AddLicense;
 import com.odde.bbuddy.R;
-import com.odde.bbuddy.di.scope.ActivityScope;
+import com.odde.bbuddy.license.viewModel.AddLicense;
 import com.odde.bbuddy.license.AddLicenseView;
 
 import org.robobinding.ViewBinder;

@@ -1,6 +1,6 @@
-package com.odde.bbuddy.account.api;
+package com.odde.bbuddy.license.api;
 
-import com.odde.bbuddy.account.viewmodel.License;
+import com.odde.bbuddy.license.viewModel.License;
 import com.odde.bbuddy.common.ApiFactory;
 
 import javax.inject.Inject;

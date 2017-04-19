@@ -5,7 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.widget.TextView;
 
-import com.odde.bbuddy.account.view.LicenseActivity;
+import com.odde.bbuddy.license.view.LicenseActivity;
 import com.odde.bbuddy.account.view.ShowAllAccountsActivity;
 
 

@@ -1,7 +1,9 @@
-package com.odde.bbuddy.account.viewmodel;
+package com.odde.bbuddy.license.viewModel;
 
-import com.odde.bbuddy.account.api.AddLicenseApi;
+import com.odde.bbuddy.license.api.AddLicenseApi;
 import com.odde.bbuddy.license.AddLicenseView;
+import com.odde.bbuddy.license.viewModel.AddLicense;
+import com.odde.bbuddy.license.viewModel.License;
 
 import junit.framework.Assert;
 
@@ -40,7 +42,7 @@ public class AddLicenseTest {
 
 		addLicense.add();
 
-		Mockito.verify(addLicenseView).showError(AddLicense.ErrorMessage.WRONG_AMOUNT);
+		verifyAddLicenseViewError(AddLicense.ErrorMessage.WRONG_AMOUNT);
 	}
 
 	@Test
@@ -50,7 +52,7 @@ public class AddLicenseTest {
 
 		addLicense.add();
 
-		Mockito.verify(addLicenseView).showError(AddLicense.ErrorMessage.WRONG_AMOUNT);
+		verifyAddLicenseViewError(AddLicense.ErrorMessage.WRONG_AMOUNT);
 	}
 
 	@Test
@@ -60,7 +62,7 @@ public class AddLicenseTest {
 
 		addLicense.add();
 
-		Mockito.verify(addLicenseView).showError(AddLicense.ErrorMessage.WRONG_MONTH);
+		verifyAddLicenseViewError(AddLicense.ErrorMessage.WRONG_MONTH);
 	}
 
 	private void verifyAddLicenseApiParams() {

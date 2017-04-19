@@ -1,6 +1,8 @@
-package com.odde.bbuddy.account.viewmodel;
+package com.odde.bbuddy.license.viewModel;
 
-import com.odde.bbuddy.account.api.AddLicenseApi;
+import android.text.TextUtils;
+
+import com.odde.bbuddy.license.api.AddLicenseApi;
 import com.odde.bbuddy.di.scope.ActivityScope;
 import com.odde.bbuddy.license.AddLicenseView;
 
@@ -71,7 +73,33 @@ public class AddLicense {
 		return !amount.isEmpty() && Integer.parseInt(amount) > 0;
 	}
 
-	private boolean isValidMonth(String month) {
-		return !month.isEmpty();
+	private boolean isValidMonth(String date) {
+		if (date.isEmpty()) {
+			return false;
+		}
+
+		String[] afterSplit = date.split("-");
+		if (afterSplit.length != 2) {
+			return false;
+		}
+
+		int year = parseInt(afterSplit[0]);
+		int month = parseInt(afterSplit[1]);
+
+		return year > 0 && month > 0 && month <= 12;
 	}
+
+	private int parseInt(String input) {
+		int result;
+		try {
+			result = Integer.parseInt(input);
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+			result = 0;
+		}
+
+		return result;
+	}
+
+
 }

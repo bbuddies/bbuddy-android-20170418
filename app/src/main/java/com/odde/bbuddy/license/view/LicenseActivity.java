@@ -1,4 +1,4 @@
-package com.odde.bbuddy.account.view;
+package com.odde.bbuddy.license.view;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
