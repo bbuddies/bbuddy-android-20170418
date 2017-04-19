@@ -19,13 +19,18 @@ import static org.mockito.Mockito.mock;
 public class ShowChargeFeeTest {
 
 	GetLicensesApi stubLicenseApi = mock(GetLicensesApi.class);
+	CalculateFee calculateFee = new CalculateFee(stubLicenseApi);
 
 	@Test
-	public void TestGetLicenseBetween() {
-		CalculateFee calculateFee = new CalculateFee(stubLicenseApi);
-
+	public void fee_startDate_endDate_in_same_month() {
 		final List<License> mockLicenses = new ArrayList<>();
 		mockLicenses.add(new License("2017-02", 28));
+
+		mockGetLicenseApiResponse(mockLicenses);
+		verifyCalculate("2017-02-10", "2017-02-14", 5);
+	}
+
+	private void mockGetLicenseApiResponse(final List<License> mockLicenses) {
 		doAnswer(new Answer() {
 			@Override
 			public Object answer(InvocationOnMock invocation) throws Throwable {
@@ -34,11 +39,13 @@ public class ShowChargeFeeTest {
 				return null;
 			}
 		}).when(stubLicenseApi).get(any(Consumer.class));
+	}
 
-		calculateFee.calculate("2017-02-10", "2017-02-14", new Consumer<Integer>() {
+	private void verifyCalculate(String startDate, String endDate, final int expectFee) {
+		calculateFee.calculate(startDate, endDate, new Consumer<Integer>() {
 			@Override
 			public void accept(Integer integer) {
-				assertThat(integer).isEqualTo(5);
+				assertThat(integer).isEqualTo(expectFee);
 			}
 		});
 	}
