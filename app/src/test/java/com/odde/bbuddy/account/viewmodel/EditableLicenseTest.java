@@ -3,18 +3,20 @@ package com.odde.bbuddy.account.viewmodel;
 import com.nitorcreations.junit.runners.NestedRunner;
 import com.odde.bbuddy.license.api.License;
 import com.odde.bbuddy.license.api.LicenseApi;
+import com.odde.bbuddy.license.view.AddLicenseCallbacks;
 import com.odde.bbuddy.license.viewmodel.EditableLicense;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 
-import static com.odde.bbuddy.common.CallbackInvoker.callRunnableAtIndex;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentCaptor.forClass;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
 @RunWith(NestedRunner.class)
@@ -22,26 +24,29 @@ public class EditableLicenseTest {
 
     LicenseApi mockLicenseApi = mock(LicenseApi.class);
     EditableLicense editableLicense = new EditableLicense(mockLicenseApi);
+    AddLicenseCallbacks mockAddLicenseCallbacks = mock(AddLicenseCallbacks.class);
 
     public class Add {
 
+        @Before
+        public void init() {
+            editableLicense.setCallbacks(mockAddLicenseCallbacks);
+        }
+
         @Test
         public void add_should_correctly_add_account() {
-            addAccount("2017-05", "100");
+            addLicense("2017-05", "100");
             verifyLicenseAddWithLicense(createLicense("2017-05", "100"));
         }
 
-//        @Test
-//        public void add_should_show_all_accounts_after_add_account_success() {
-//            given_add_account_will_success();
-//
-//            addAccount("name", 100);
-//
-//            verify(mockShowAllAccountsNavigation).navigate();
-//        }
+        @Test
+        public void add_should_show_all_accounts_after_add_account_success() {
+            addLicense("2017-05", "0");
+            verify(mockLicenseApi, never()).addLicense(any(License.class));
+        }
 //
 //        private void given_add_account_will_success() {
-//            callRunnableAtIndex(1).when(mockLicenseApi).addAccount(any(Account.class), any(Runnable.class));
+//            callRunnableAtIndex(1).when(mockLicenseApi).addLicense(any(Account.class), any(Runnable.class));
 //        }
 
         private void verifyLicenseAddWithLicense(License license) {
@@ -50,7 +55,7 @@ public class EditableLicenseTest {
             assertThat(captor.getValue()).isEqualToComparingFieldByField(license);
         }
 
-        private void addAccount(String month, String amount) {
+        private void addLicense(String month, String amount) {
             editableLicense.setMonth(month);
             editableLicense.setAmount(amount);
             editableLicense.add();

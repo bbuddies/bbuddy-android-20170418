@@ -1,11 +1,9 @@
 package com.odde.bbuddy.license.viewmodel;
 
-import com.odde.bbuddy.account.viewmodel.Account;
 import com.odde.bbuddy.di.scope.ActivityScope;
 import com.odde.bbuddy.license.api.License;
 import com.odde.bbuddy.license.api.LicenseApi;
-import com.odde.bbuddy.license.view.AddLicense;
-import com.odde.bbuddy.license.view.AddLicenseActivity;
+import com.odde.bbuddy.license.view.AddLicenseCallbacks;
 
 import org.robobinding.annotation.PresentationModel;
 
@@ -20,7 +18,7 @@ public class EditableLicense {
 
 	private String month;
 	private String amount;
-	private AddLicense view;
+	private AddLicenseCallbacks mCallbacks;
 	private LicenseApi licenseApi;
 
 	@Inject
@@ -29,6 +27,10 @@ public class EditableLicense {
 	}
 
 	public void add() {
+		if (Integer.parseInt(amount) <= 0) {
+			mCallbacks.showError("金額必須大於零");
+			return;
+		}
 		License license = new License();
 		license.setMonth(month);
 		license.setAmount(amount);
@@ -51,7 +53,7 @@ public class EditableLicense {
 		this.amount = amount;
 	}
 
-	public void setView(AddLicense addLicense) {
-		this.view = addLicense;
+	public void setCallbacks(AddLicenseCallbacks callbacks) {
+		this.mCallbacks = callbacks;
 	}
 }
