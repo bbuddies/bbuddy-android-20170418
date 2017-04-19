@@ -12,4 +12,10 @@ public class License {
 
 	private String month;
 	private int amount;
+
+	public License(String month, int amount) {
+		this.month = month;
+		this.amount = amount;
+	}
+
 }

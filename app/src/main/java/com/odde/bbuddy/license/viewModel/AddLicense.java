@@ -60,11 +60,7 @@ public class AddLicense {
 			return;
 		}
 
-		License license = new License();
-		license.setMonth(month);
-		license.setAmount(Integer.parseInt(amount));
-
-		addLicenseApi.addLicense(license);
+		addLicenseApi.addLicense(new License(month, Integer.parseInt(amount)));
 	}
 
 	private boolean isValidAmount(String amount) {

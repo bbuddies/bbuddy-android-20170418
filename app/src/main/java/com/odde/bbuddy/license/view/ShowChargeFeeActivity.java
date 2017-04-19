@@ -16,7 +16,6 @@ import javax.inject.Inject;
 
 import static com.odde.bbuddy.di.component.ActivityComponentFactory.createActivityComponentBy;
 
-
 public class ShowChargeFeeActivity extends Fragment {
 
 	@Inject
