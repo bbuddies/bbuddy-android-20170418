@@ -30,5 +30,6 @@ public class AddLicenseActivity extends AppCompatActivity {
 		createActivityComponentBy(this).inject(this);
 
 		setContentView(viewBinder.inflateAndBind(R.layout.activity_add_license, license));
+		license.setContext(AddLicenseActivity.this);
 	}
 }
