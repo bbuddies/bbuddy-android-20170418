@@ -51,7 +51,6 @@ public class AddLicenseController {
 	}
 
 	public void add() {
-		Log.d(TAG, "" + month + "/" + amount);
 		if (isAmountZeroEmpty()) {
 			showAmountZeroToast();
 			return;
@@ -65,7 +64,7 @@ public class AddLicenseController {
 		try {
 			number = Integer.parseInt(amount);
 		} catch(NumberFormatException e) {
-
+			
 		}
 		return number == 0;
 	}
