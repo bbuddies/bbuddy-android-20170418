@@ -27,8 +27,12 @@ public class EditableLicense {
 	}
 
 	public void add() {
+		if (amount.isEmpty() || month.isEmpty()) {
+			mCallbacks.showError("amount and month cannot be empty");
+			return;
+		}
 		if (Integer.parseInt(amount) <= 0) {
-			mCallbacks.showError("金額必須大於零");
+			mCallbacks.showError("system error, please find PO");
 			return;
 		}
 		License license = new License();
@@ -56,4 +60,5 @@ public class EditableLicense {
 	public void setCallbacks(AddLicenseCallbacks callbacks) {
 		this.mCallbacks = callbacks;
 	}
+
 }

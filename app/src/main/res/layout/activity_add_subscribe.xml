@@ -17,12 +17,12 @@
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/month_textfield"
+            android:id="@+id/start_date_textfield"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="month"
+            android:hint="Start date"
             android:inputType="textCapWords"
-            bind:text="${month}"/>
+            bind:text="${startDate}"/>
 
     </android.support.design.widget.TextInputLayout>
 
@@ -31,25 +31,24 @@
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/amount_textfield"
+            android:id="@+id/end_date_textfield"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="amount"
-            android:inputType="number"
-            bind:text="${amount}"/>
+            android:hint="End date"
+            bind:text="${endDate}"/>
     </android.support.design.widget.TextInputLayout>
 
     <Button
-        android:id="@+id/save_button"
+        android:id="@+id/calculate_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/confirm"
-        bind:onClick="add"/>
+        android:text="calculate"
+        bind:onClick="calculate"/>
 
     <TextView
-        android:id="@+id/error_message"
+        android:id="@+id/total_amount_label"
         android:layout_width="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"/>
 
 </LinearLayout>

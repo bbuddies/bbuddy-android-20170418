@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.odde.bbuddy.account.view.AddAccountActivity;
 import com.odde.bbuddy.license.view.AddLicenseActivity;
+import com.odde.bbuddy.subscribe.view.AddSubscribeActivity;
 
 public class DashboardActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener {
 
@@ -34,6 +35,7 @@ public class DashboardActivity extends AppCompatActivity implements TabLayout.On
         tabLayout.addTab(tabLayout.newTab().setText("Dashboard"));
         tabLayout.addTab(tabLayout.newTab().setText("Accounts"));
         tabLayout.addTab(tabLayout.newTab().setText("Licenses"));
+        tabLayout.addTab(tabLayout.newTab().setText("Subscribe"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         //Initializing viewPager
@@ -58,7 +60,7 @@ public class DashboardActivity extends AppCompatActivity implements TabLayout.On
         mActionBar.setCustomView(mCustomView);
         mActionBar.setDisplayShowCustomEnabled(true);
 
-        add = (TextView) mCustomView.findViewById(R.id.add_license_button);
+        add = (TextView) mCustomView.findViewById(R.id.add);
 
         tabLayout.getTabAt(getIntent().getIntExtra("tabPosition", 0)).select();
     }
@@ -79,6 +81,14 @@ public class DashboardActivity extends AppCompatActivity implements TabLayout.On
                     @Override
                     public void onClick(View view) {
                         startActivity(new Intent(getApplicationContext(), AddLicenseActivity.class));
+                    }
+                });
+                break;
+            case 3:
+                add.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        startActivity(new Intent(getApplicationContext(), AddSubscribeActivity.class));
                     }
                 });
                 break;

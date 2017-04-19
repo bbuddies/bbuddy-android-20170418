@@ -13,6 +13,8 @@ import com.odde.bbuddy.common.JsonBackend;
 import com.odde.bbuddy.common.JsonMapper;
 import com.odde.bbuddy.license.api.LicenseApi;
 import com.odde.bbuddy.license.api.RawLicenseApi;
+import com.odde.bbuddy.subscribe.api.RawSubscribeApi;
+import com.odde.bbuddy.subscribe.api.SubscribeApi;
 
 import javax.inject.Singleton;
 
@@ -56,6 +58,11 @@ public class ApplicationModule {
     @Provides @Singleton
     public LicenseApi provideLicense(ApiFactory apiFactory) {
         return new LicenseApi(apiFactory.create(RawLicenseApi.class));
+    }
+
+    @Provides @Singleton
+    public SubscribeApi provideSubscribe(ApiFactory apiFactory) {
+        return new SubscribeApi(apiFactory.create(RawSubscribeApi.class));
     }
 
 }
