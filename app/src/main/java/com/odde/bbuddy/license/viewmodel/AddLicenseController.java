@@ -64,7 +64,7 @@ public class AddLicenseController {
 		try {
 			number = Integer.parseInt(amount);
 		} catch(NumberFormatException e) {
-			
+
 		}
 		return number == 0;
 	}
