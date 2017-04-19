@@ -7,6 +7,8 @@ import com.odde.bbuddy.account.view.ShowAllAccountsActivity;
 import com.odde.bbuddy.di.module.ActivityModule;
 import com.odde.bbuddy.di.scope.ActivityScope;
 import com.odde.bbuddy.license.view.AddLicenseActivity;
+import com.odde.bbuddy.license.view.QueryAmountActivity;
+import com.odde.bbuddy.license.viewmodel.QueryAmountController;
 
 import dagger.Subcomponent;
 
@@ -18,4 +20,5 @@ public interface ActivityComponent {
     void inject(EditDeleteAccountActivity editDeleteAccountActivity);
     void inject(LoginActivity loginActivity);
     void inject(AddLicenseActivity addLicenseActivity);
+    void inject(QueryAmountActivity queryAmountActivity);
 }
