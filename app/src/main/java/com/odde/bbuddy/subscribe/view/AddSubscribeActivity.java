@@ -30,6 +30,7 @@ public class AddSubscribeActivity extends AppCompatActivity implements AddSubscr
 	protected void onCreate(@Nullable Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		createActivityComponentBy(this).inject(this);
+		mSubscribeModule.setCallbacks(this);
 		setContentView(mViewBinder.inflateAndBind(R.layout.activity_add_subscribe, mSubscribeModule));
 	}
 

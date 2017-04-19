@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:hint="Start date"
             android:inputType="textCapWords"
-            bind:text="${startDate}"/>
+            bind:text="${userStartDate}"/>
 
     </android.support.design.widget.TextInputLayout>
 
@@ -35,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="End date"
-            bind:text="${endDate}"/>
+            bind:text="${userEndDate}"/>
     </android.support.design.widget.TextInputLayout>
 
     <Button
