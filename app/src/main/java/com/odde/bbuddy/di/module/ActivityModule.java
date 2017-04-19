@@ -5,6 +5,7 @@ import android.content.Context;
 
 import com.odde.bbuddy.account.viewmodel.PresentableAccounts;
 import com.odde.bbuddy.di.scope.ActivityScope;
+import com.odde.bbuddy.license.AddLicenseView;
 
 import org.robobinding.ViewBinder;
 import org.robobinding.binder.BinderFactoryBuilder;
@@ -32,6 +33,11 @@ public class ActivityModule {
     @Provides @ActivityScope
     Activity provideActivity() {
         return activity;
+    }
+
+    @Provides @ActivityScope
+    AddLicenseView provideAddLicenseView() {
+        return (AddLicenseView)activity;
     }
 
     @Provides @ActivityScope
