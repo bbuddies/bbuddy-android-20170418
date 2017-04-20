@@ -1,17 +1,22 @@
 package com.odde.bbuddy.license.viewModel;
 
-import android.util.Log;
-
 import com.odde.bbuddy.common.Consumer;
 import com.odde.bbuddy.di.scope.ActivityScope;
 
 import org.robobinding.annotation.PresentationModel;
+import org.robobinding.presentationmodel.HasPresentationModelChangeSupport;
+import org.robobinding.presentationmodel.PresentationModelChangeSupport;
 
 import javax.inject.Inject;
+import javax.inject.Named;
+
+import dagger.Lazy;
 
 @PresentationModel
 @ActivityScope
-public class ShowChargeFee {
+public class ShowChargeFee implements HasPresentationModelChangeSupport {
+
+	private final Lazy<PresentationModelChangeSupport> changeSupportLazyLoader;
 
 	private String startDate;
 	private String endDate;
@@ -21,8 +26,18 @@ public class ShowChargeFee {
 	CalculateFee calculateFee;
 
 	@Inject
-	public ShowChargeFee(CalculateFee calculateFee) {
+	public ShowChargeFee(CalculateFee calculateFee, @Named("fee") Lazy<PresentationModelChangeSupport> changeSupportLazyLoader) {
 		this.calculateFee = calculateFee;
+		this.changeSupportLazyLoader = changeSupportLazyLoader;
+	}
+
+	@Override
+	public PresentationModelChangeSupport getPresentationModelChangeSupport() {
+		return changeSupport();
+	}
+
+	private PresentationModelChangeSupport changeSupport() {
+		return this.changeSupportLazyLoader.get();
 	}
 
 	public void charge() {
@@ -30,7 +45,7 @@ public class ShowChargeFee {
 			@Override
 			public void accept(Integer fee) {
 				ShowChargeFee.this.fee = String.valueOf(fee);
-				Log.i("Fee", ShowChargeFee.this.fee);
+				changeSupport().refreshPresentationModel();
 			}
 		});
 	}

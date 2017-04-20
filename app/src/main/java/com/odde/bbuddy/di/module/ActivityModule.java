@@ -6,6 +6,7 @@ import android.content.Context;
 import com.odde.bbuddy.account.viewmodel.PresentableAccounts;
 import com.odde.bbuddy.di.scope.ActivityScope;
 import com.odde.bbuddy.license.view.AddLicenseView;
+import com.odde.bbuddy.license.viewModel.ShowChargeFee;
 
 import org.robobinding.ViewBinder;
 import org.robobinding.binder.BinderFactoryBuilder;
@@ -49,5 +50,11 @@ public class ActivityModule {
     PresentationModelChangeSupport providePresentationModelChangeSupportForAccounts(PresentableAccounts presentableAccounts) {
         return new PresentationModelChangeSupport(presentableAccounts);
     }
+
+    @Provides @ActivityScope @Named("fee")
+    PresentationModelChangeSupport providePresentationModelChangeSupportForFee(ShowChargeFee showChargeFee) {
+        return new PresentationModelChangeSupport(showChargeFee);
+    }
+
 
 }

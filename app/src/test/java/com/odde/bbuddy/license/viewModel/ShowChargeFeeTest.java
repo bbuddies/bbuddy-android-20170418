@@ -23,6 +23,14 @@ public class ShowChargeFeeTest {
 	final List<License> mockLicenses = new ArrayList<>();
 
 	@Test
+	public void fee_startDate_endDate_is_same_day() {
+		mockLicenses.add(new License("2017-02", 28));
+
+		mockGetLicenseApiResponse(mockLicenses);
+		verifyCalculate("2017-02-15", "2017-02-15", 1);
+	}
+
+	@Test
 	public void fee_startDate_endDate_in_same_month() {
 		mockLicenses.add(new License("2017-02", 28));
 
