@@ -75,7 +75,7 @@ public class EditableSubscribe {
         }
 
         SubscribePlanCalculator calculator = new SubscribePlanCalculator(amountMap, startDate, endDate);
-        return String.valueOf(calculator.calculate());
+        return String.format(Locale.getDefault(), "%.2f", calculator.calculate());
     }
 
     public String getUserStartDate() {
