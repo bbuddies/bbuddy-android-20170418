@@ -50,21 +50,13 @@ public class AddLicenseController {
 	}
 
 	public void add() {
-//		if (isAmountZeroOrEmpty()) {
-//			view.showAmountZeroToast("");
-//		} else {
-//			licenseApi.startAPI(runnable);
-//
-//			api.addLicense(new License(month, amount)), new Runnable(){
-//				@Override
-//				public void run() {
-//					view.shwo
-//				}
-//			};
-//		}
+		License license = new License(month, amount);
+		if (license.isAmountZeroOrEmpty()) {
+			showAmountZeroToast();
+			return;
+		}
 
-
-
+		api.addLicense(license);
 	}
 
 	void showAmountZeroToast() {

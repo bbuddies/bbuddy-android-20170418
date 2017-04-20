@@ -1,19 +1,18 @@
 package com.odde.bbuddy.license.viewmodel;
 
 import android.text.format.DateUtils;
-import android.util.Log;
 
 import com.odde.bbuddy.common.Consumer;
 import com.odde.bbuddy.license.api.LicenseApi;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+
+import javax.inject.Inject;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -26,13 +25,13 @@ public class QueryDate {
 	private String endDate;
 	private LicenseApi licenseApi;
 
-	public QueryDate(String startDate, String endDate) {
-		this.startDate = startDate;
-		this.endDate = endDate;
-	}
+//	public QueryDate(String startDate, String endDate) {
+//		this.startDate = startDate;
+//		this.endDate = endDate;
+//	}
 
+	@Inject
 	public QueryDate(LicenseApi licenseApi) {
-
 		this.licenseApi = licenseApi;
 	}
 
@@ -40,9 +39,7 @@ public class QueryDate {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		try {
 			Date date = formatter.parse(dateStr);
-			Log.d("nan", "date: " + date.toString());
 		} catch(ParseException e) {
-			Log.d("nan", "Exception: " + e.getLocalizedMessage());
 			return false;
 		}
 		return true;
@@ -52,10 +49,8 @@ public class QueryDate {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		try {
 			Date date = formatter.parse(dateStr);
-			Log.d("nan", "date: " + date.toString());
 			return date;
 		} catch(ParseException e) {
-			Log.d("nan", "Exception: " + e.getLocalizedMessage());
 			return null;
 		}
 	}
