@@ -1,5 +1,6 @@
 package com.odde.bbuddy.license.viewModel;
 
+import com.odde.bbuddy.common.Consumer;
 import com.odde.bbuddy.di.scope.ActivityScope;
 import com.odde.bbuddy.license.api.AddLicenseApi;
 import com.odde.bbuddy.license.view.AddLicenseView;
@@ -60,7 +61,12 @@ public class AddLicense {
 			return;
 		}
 
-		addLicenseApi.addLicense(new License(month, Integer.parseInt(amount)));
+		addLicenseApi.addLicense(new License(month, Integer.parseInt(amount)), new Consumer<License>() {
+			@Override
+			public void accept(License license) {
+				addLicenseView.completed();
+			}
+		});
 	}
 
 	private boolean isValidAmount(String amount) {

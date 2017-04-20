@@ -1,5 +1,6 @@
 package com.odde.bbuddy.license.viewModel;
 
+import com.odde.bbuddy.common.Consumer;
 import com.odde.bbuddy.license.api.AddLicenseApi;
 import com.odde.bbuddy.license.view.AddLicenseView;
 
@@ -9,6 +10,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
+
+import static org.mockito.ArgumentMatchers.any;
 
 public class AddLicenseTest {
 
@@ -65,7 +68,7 @@ public class AddLicenseTest {
 
 	private void verifyAddLicenseApiParams() {
 		ArgumentCaptor<License> captor = ArgumentCaptor.forClass(License.class);
-		Mockito.verify(addLicenseApi).addLicense(captor.capture());
+		Mockito.verify(addLicenseApi).addLicense(captor.capture(), any(Consumer.class));
 		Assert.assertEquals(addLicense.getMonth(), captor.getValue().getMonth());
 		Assert.assertEquals(Integer.parseInt(addLicense.getAmount()), captor.getValue().getAmount());
 	}
