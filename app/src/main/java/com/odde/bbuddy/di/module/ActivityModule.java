@@ -5,6 +5,7 @@ import android.content.Context;
 
 import com.odde.bbuddy.account.viewmodel.PresentableAccounts;
 import com.odde.bbuddy.di.scope.ActivityScope;
+import com.odde.bbuddy.license.viewmodel.QueryAmountController;
 
 import org.robobinding.ViewBinder;
 import org.robobinding.binder.BinderFactoryBuilder;
@@ -42,6 +43,11 @@ public class ActivityModule {
     @Provides @ActivityScope @Named("accounts")
     PresentationModelChangeSupport providePresentationModelChangeSupportForAccounts(PresentableAccounts presentableAccounts) {
         return new PresentationModelChangeSupport(presentableAccounts);
+    }
+
+    @Provides @ActivityScope @Named("total")
+    PresentationModelChangeSupport providePresentationModelChangeSupportForTotal(QueryAmountController queryAmountController) {
+        return new PresentationModelChangeSupport(queryAmountController);
     }
 
 }

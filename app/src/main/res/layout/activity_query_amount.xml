@@ -46,6 +46,8 @@
 
 	<TextView
 		android:id="@+id/total"
+		android:textColor="@android:color/black"
+		android:hint="abc"
 		bind:text="${total}"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"/>
