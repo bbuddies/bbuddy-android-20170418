@@ -62,7 +62,7 @@ public class CalculateFee {
 	}
 
 	private int getPartialFeeInMonth(int fee, int startDay, int endDay, int totalDay) {
-		return fee * (endDay - startDay + 1) / totalDay;
+		return (int) Math.ceil((double) fee * (endDay - startDay + 1) / totalDay);
 	}
 
 	protected Calendar toCalendar(String dateString) {
