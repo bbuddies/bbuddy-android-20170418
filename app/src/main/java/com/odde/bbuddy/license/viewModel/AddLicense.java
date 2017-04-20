@@ -19,8 +19,9 @@ public class AddLicense {
 	private AddLicenseView addLicenseView;
 
 	class ErrorMessage {
-		static final String WRONG_MONTH = "Please fill correct date EX:2017-02";
-		static final String WRONG_AMOUNT = "License amount should not be empty!";
+		static final String EMPTY_MONTH = "Please fill correct date EX:2017-02";
+		static final String EMPTY_AMOUNT = "License amount should not be empty!";
+		static final String WRONG_AMOUNT = "License amount should be greater than zero!";
 	}
 
 	@Inject
@@ -52,11 +53,16 @@ public class AddLicense {
 
 	public void add() {
 		if (!isValidMonth(month)) {
-			addLicenseView.showError(ErrorMessage.WRONG_MONTH);
+			addLicenseView.showError(ErrorMessage.EMPTY_MONTH);
 			return;
 		}
 
-		if (!isValidAmount(amount)) {
+		if (amount.isEmpty()) {
+			addLicenseView.showError(ErrorMessage.EMPTY_AMOUNT);
+			return;
+		}
+
+		if(!isAmountGreaterThanZero(amount)) {
 			addLicenseView.showError(ErrorMessage.WRONG_AMOUNT);
 			return;
 		}
@@ -69,8 +75,8 @@ public class AddLicense {
 		});
 	}
 
-	private boolean isValidAmount(String amount) {
-		return !amount.isEmpty() && Integer.parseInt(amount) > 0;
+	private boolean isAmountGreaterThanZero(String amount) {
+		return Integer.parseInt(amount) > 0;
 	}
 
 	private boolean isValidMonth(String date) {

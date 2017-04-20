@@ -53,7 +53,7 @@ public class AddLicenseTest {
 
 		addLicense.add();
 
-		verifyAddLicenseViewError(AddLicense.ErrorMessage.WRONG_AMOUNT);
+		verifyAddLicenseViewError(AddLicense.ErrorMessage.EMPTY_AMOUNT);
 	}
 
 	@Test
@@ -63,7 +63,7 @@ public class AddLicenseTest {
 
 		addLicense.add();
 
-		verifyAddLicenseViewError(AddLicense.ErrorMessage.WRONG_MONTH);
+		verifyAddLicenseViewError(AddLicense.ErrorMessage.EMPTY_MONTH);
 	}
 
 	private void verifyAddLicenseApiParams() {
