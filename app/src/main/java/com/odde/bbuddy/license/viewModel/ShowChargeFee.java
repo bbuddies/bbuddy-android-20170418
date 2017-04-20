@@ -1,5 +1,7 @@
 package com.odde.bbuddy.license.viewModel;
 
+import android.util.Log;
+
 import com.odde.bbuddy.common.Consumer;
 import com.odde.bbuddy.di.scope.ActivityScope;
 
@@ -28,6 +30,7 @@ public class ShowChargeFee {
 			@Override
 			public void accept(Integer fee) {
 				ShowChargeFee.this.fee = String.valueOf(fee);
+				Log.i("Fee", ShowChargeFee.this.fee);
 			}
 		});
 	}

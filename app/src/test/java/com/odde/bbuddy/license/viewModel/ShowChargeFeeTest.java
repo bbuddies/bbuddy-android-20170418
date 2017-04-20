@@ -20,14 +20,55 @@ public class ShowChargeFeeTest {
 
 	GetLicensesApi stubLicenseApi = mock(GetLicensesApi.class);
 	CalculateFee calculateFee = new CalculateFee(stubLicenseApi);
+	final List<License> mockLicenses = new ArrayList<>();
 
 	@Test
 	public void fee_startDate_endDate_in_same_month() {
-		final List<License> mockLicenses = new ArrayList<>();
 		mockLicenses.add(new License("2017-02", 28));
 
 		mockGetLicenseApiResponse(mockLicenses);
-		verifyCalculate("2017-02-10", "2017-02-14", 5);
+		verifyCalculate("2017-02-15", "2017-02-28", 14);
+	}
+
+	@Test
+	public void fee_startDate_endDate_in_different_month() {
+		mockLicenses.add(new License("2017-02", 28));
+		mockLicenses.add(new License("2017-03", 31));
+
+		mockGetLicenseApiResponse(mockLicenses);
+		verifyCalculate("2017-02-15", "2017-03-15", 29);
+	}
+
+	@Test
+	public void fee_not_all_licenses_exist_between_startDate_endDate() {
+		mockLicenses.add(new License("2017-02", 28));
+		mockLicenses.add(new License("2017-03", 100));
+		mockLicenses.add(new License("2017-06", 100));
+		mockLicenses.add(new License("2017-07", 31));
+
+		mockGetLicenseApiResponse(mockLicenses);
+		verifyCalculate("2017-02-15", "2017-07-15", 229);
+	}
+
+	@Test
+	public void fee_startDate_month_license_not_exist() {
+		mockLicenses.add(new License("2017-03", 100));
+		mockLicenses.add(new License("2017-06", 100));
+		mockLicenses.add(new License("2017-07", 31));
+
+		mockGetLicenseApiResponse(mockLicenses);
+		verifyCalculate("2017-02-10", "2017-07-15", 215);
+	}
+
+	@Test
+	public void fee_endDate_month_license_not_exist() {
+
+		mockLicenses.add(new License("2017-02", 28));
+		mockLicenses.add(new License("2017-03", 100));
+		mockLicenses.add(new License("2017-06", 100));
+
+		mockGetLicenseApiResponse(mockLicenses);
+		verifyCalculate("2017-02-15", "2017-07-15", 214);
 	}
 
 	private void mockGetLicenseApiResponse(final List<License> mockLicenses) {

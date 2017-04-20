@@ -29,7 +29,7 @@ public class CalculateFee {
 			@Override
 			public void accept(List<License> licenses) {
 				classifyAmount(startDateString, endDateString, licenses);
-				int fee = getFeeAtStartAndEndMonth(startDateString, endDateString);
+				int fee = getFeeMonthBetween() + getFeeAtStartAndEndMonth(startDateString, endDateString);
 				consumer.accept(fee);
 			}
 		});
@@ -47,6 +47,15 @@ public class CalculateFee {
 					startDateCal.get(Calendar.DATE),
 					endDateCal.get(Calendar.DATE),
 					startDateCal.getActualMaximum(Calendar.DAY_OF_MONTH));
+		} else {
+			fee += getPartialFeeInMonth(startDateMonthAmount,
+					startDateCal.get(Calendar.DATE),
+					startDateCal.getActualMaximum(Calendar.DAY_OF_MONTH),
+					startDateCal.getActualMaximum(Calendar.DAY_OF_MONTH));
+			fee += getPartialFeeInMonth(endDateMonthAmount,
+					1,
+					endDateCal.get(Calendar.DATE),
+					endDateCal.getActualMaximum(Calendar.DAY_OF_MONTH));
 		}
 
 		return fee;
@@ -67,12 +76,26 @@ public class CalculateFee {
 		return calendar;
 	}
 
+	private int getFeeMonthBetween() {
+		int fee = 0;
+		for (Integer amount : amountsMonthBetween) {
+			fee += amount;
+		}
+
+		return fee;
+	}
+
 	protected void classifyAmount(String startDateString, String endDateString, List<License> allLicenses) {
 		String startStringTrimDay = trimDay(startDateString);
 		String endStringTrimDay = trimDay(endDateString);
 
 		for (License license : allLicenses) {
 			String licenseMonth = license.getMonth();
+			if (startStringTrimDay.compareTo(licenseMonth) < 0
+					&& licenseMonth.compareTo(endStringTrimDay) < 0) {
+				amountsMonthBetween.add(license.getAmount());
+			}
+
 			if (startStringTrimDay.compareTo(licenseMonth) == 0) {
 				startDateMonthAmount = license.getAmount();
 			}
