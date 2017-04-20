@@ -31,6 +31,6 @@ public class AddLicenseActivity extends AppCompatActivity implements AddLicenseV
 
 	@Override
 	public void showError(String error) {
-		Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
+		Toast.makeText(this, error, Toast.LENGTH_LONG).show();
 	}
 }
