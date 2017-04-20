@@ -3,7 +3,7 @@ package com.odde.bbuddy.license.viewmodel;
 import com.odde.bbuddy.di.scope.ActivityScope;
 import com.odde.bbuddy.license.api.License;
 import com.odde.bbuddy.license.api.LicenseApi;
-import com.odde.bbuddy.license.view.AddLicenseCallbacks;
+import com.odde.bbuddy.license.view.AddLicenseView;
 
 import org.robobinding.annotation.PresentationModel;
 
@@ -18,7 +18,7 @@ public class EditableLicense {
 
 	private String month;
 	private String amount;
-	private AddLicenseCallbacks mCallbacks;
+	private AddLicenseView mView;
 	private LicenseApi licenseApi;
 
 	@Inject
@@ -28,11 +28,11 @@ public class EditableLicense {
 
 	public void add() {
 		if (amount.isEmpty() || month.isEmpty()) {
-			mCallbacks.showError("amount and month cannot be empty");
+			mView.showError("amount and month cannot be empty");
 			return;
 		}
 		if (Integer.parseInt(amount) <= 0) {
-			mCallbacks.showError("system error, please find PO");
+			mView.showError("system error, please find PO");
 			return;
 		}
 		License license = new License();
@@ -57,8 +57,8 @@ public class EditableLicense {
 		this.amount = amount;
 	}
 
-	public void setCallbacks(AddLicenseCallbacks callbacks) {
-		this.mCallbacks = callbacks;
+	public void setView(AddLicenseView callbacks) {
+		this.mView = callbacks;
 	}
 
 }

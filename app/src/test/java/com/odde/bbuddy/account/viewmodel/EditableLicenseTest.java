@@ -3,7 +3,7 @@ package com.odde.bbuddy.account.viewmodel;
 import com.nitorcreations.junit.runners.NestedRunner;
 import com.odde.bbuddy.license.api.License;
 import com.odde.bbuddy.license.api.LicenseApi;
-import com.odde.bbuddy.license.view.AddLicenseCallbacks;
+import com.odde.bbuddy.license.view.AddLicenseView;
 import com.odde.bbuddy.license.viewmodel.EditableLicense;
 
 import org.junit.Before;
@@ -24,13 +24,13 @@ public class EditableLicenseTest {
 
     LicenseApi mockLicenseApi = mock(LicenseApi.class);
     EditableLicense editableLicense = new EditableLicense(mockLicenseApi);
-    AddLicenseCallbacks mockAddLicenseCallbacks = mock(AddLicenseCallbacks.class);
+    AddLicenseView mockAddLicenseView = mock(AddLicenseView.class);
 
     public class Add {
 
         @Before
         public void init() {
-            editableLicense.setCallbacks(mockAddLicenseCallbacks);
+            editableLicense.setView(mockAddLicenseView);
         }
 
         @Test

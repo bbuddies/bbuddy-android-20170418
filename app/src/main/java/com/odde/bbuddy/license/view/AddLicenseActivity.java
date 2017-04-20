@@ -3,7 +3,6 @@ package com.odde.bbuddy.license.view;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.odde.bbuddy.R;
@@ -19,7 +18,7 @@ import static com.odde.bbuddy.di.component.ActivityComponentFactory.createActivi
  * Created by aaronchu on 2017/4/18.
  */
 
-public class AddLicenseActivity extends AppCompatActivity implements AddLicenseCallbacks {
+public class AddLicenseActivity extends AppCompatActivity implements AddLicenseView {
 
 	@Inject
 	EditableLicense mLicenseModule;
@@ -31,7 +30,7 @@ public class AddLicenseActivity extends AppCompatActivity implements AddLicenseC
 	protected void onCreate(@Nullable Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		createActivityComponentBy(this).inject(this);
-		mLicenseModule.setCallbacks(this);
+		mLicenseModule.setView(this);
 		setContentView(mViewBinder.inflateAndBind(R.layout.activity_add_license, mLicenseModule));
 	}
 
